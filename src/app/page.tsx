@@ -1,4 +1,4 @@
-import CreateUser from "@/components/CreateUser";
+import CreateUser from "@/components/CreatePost";
 import ModeToggle from "@/components/ModeToggle";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
