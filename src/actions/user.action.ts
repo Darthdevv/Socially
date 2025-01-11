@@ -108,6 +108,32 @@ export async function getRandomUsers() {
   }
 }
 
+
+export async function getAllUsers() {
+  try {
+    // Fetch all users
+    const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        username: true,
+        image: true,
+        _count: {
+          select: {
+            followers: true,
+          },
+        },
+      },
+    });
+
+    return users;
+  } catch (error) {
+    console.error("Error fetching all users:", error);
+    throw new Error("Failed to fetch users");
+  }
+}
+
+
 export async function toggleFollow(targetUserId: string) {
   try {
     const userId = await getDbUserId();
